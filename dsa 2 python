@@ -1,0 +1,74 @@
+marks = []
+
+def stud_get():
+    print("Enter no of student in SE Class : ")
+    N = int(input())
+    global marks
+    for i in range(N):
+        print("Enter the marks (Write -1 for absent student)")
+        M = int(input())
+        marks.append(M)
+    print(marks)
+
+def avg_marks():
+    sum = 0
+    cnt = 0
+    for i in range(len(marks)):
+        if marks[i] != -1:
+            sum = sum + marks[i]
+            cnt += 1
+    print("Total Marks -", sum)
+    print("Avg in float", sum / cnt)
+    print("Avg in integer", sum // cnt)
+
+def high_low():
+    temp = marks[0]
+    for i in range(len(marks)):
+        if marks[i] > temp:
+            temp = marks[i]
+    print("Highest Marks-", temp)
+    temp = marks[0]
+    for i in range(len(marks)):
+        if marks[i] != -1:
+            if temp > marks[i]:
+                temp = marks[i]
+    print("Lowest Marks", temp)
+
+def count_abs():
+    cnt = 0
+    for i in range(len(marks)):
+        if marks[i] == -1:
+            cnt += 1
+    print("No of absent students=", cnt)
+
+def high_freq():
+    freq = []
+    for i in range(len(marks)):
+        if marks[i] != -1:
+            freq.append(marks.count(marks[i]))
+    print(freq)
+    k = max(freq)
+    print("Highest frequency-", k)
+    print("Highest Marks", marks[k])
+
+if __name__ == "__main__":
+    print("*** Take Input.............")
+    stud_get()
+    while True:
+        print("1. The average score of class")
+        print("2. Highest score and lowest score of class")
+        print("3. Count of students who were absent for the test")
+        print("4. Display mark with highest frequency")
+        print("5. Exit")
+        print("Enter choice")
+        choice = int(input())
+        if choice == 1:
+            avg_marks()
+        if choice == 2:
+            high_low()
+        if choice == 3:
+            count_abs()
+        if choice == 4:
+            high_freq()
+        if choice == 5:
+            exit()
